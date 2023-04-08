@@ -15,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 class OpenAiPayloadsTest {
 
     @Test
-    void serialisesAJsonPayload_toOpenAiResponseModel() throws Exception {
+    void deserialisesAJsonPayload_toOpenAiResponseModel() throws Exception {
 
         ObjectMapper mapper = prepareObjectMapper();
         OpenAiResponseWrapperForModels responseWrapperForModels = readPayloadInputAsJson(mapper);
