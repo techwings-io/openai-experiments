@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import io.techwings.openai.experiments.demo.models.OpenAiResponseForModels;
 import io.techwings.openai.experiments.demo.models.OpenAiResponseWrapperForModels;
 import org.jetbrains.annotations.NotNull;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
@@ -16,10 +17,15 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 
 class OpenAiPayloadsTest {
 
+
+    private ObjectMapper mapper;
+    @BeforeEach
+    public void setup() {
+        mapper = prepareObjectMapper();
+    }
+
     @Test
     void deserialisesTheOpenAiModelsJsonPayload_toADomainModel() throws Exception {
-
-        ObjectMapper mapper = prepareObjectMapper();
         OpenAiResponseWrapperForModels responseWrapperForModels = readPayloadInputAsJson(mapper);
         validateReturnedPayload(responseWrapperForModels);
     }
