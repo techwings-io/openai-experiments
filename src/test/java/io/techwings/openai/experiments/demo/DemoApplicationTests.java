@@ -2,6 +2,7 @@ package io.techwings.openai.experiments.demo;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -13,6 +14,10 @@ import org.springframework.web.client.RestTemplate;
 
 import java.io.File;
 import java.util.Arrays;
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @SpringBootTest
 class DemoApplicationTests {
@@ -28,8 +33,10 @@ class DemoApplicationTests {
         mapper.disable(DeserializationFeature.FAIL_ON_IGNORED_PROPERTIES);
         OpenAiResponseWrapperForModels openAiResponseWrapperForModelsForModels =
                 mapper.readValue(f, OpenAiResponseWrapperForModels.class);
-        Arrays.stream(openAiResponseWrapperForModelsForModels.getModels()).toList()
-                .forEach(m -> System.out.println(m.toString()));
+        List<OpenAiResponseForModels> models =
+                Arrays.asList(openAiResponseWrapperForModelsForModels.getModels());
+        assertFalse(models.isEmpty());
+        models.forEach(System.out::println);
     }
 
 }
