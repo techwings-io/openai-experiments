@@ -1,11 +1,10 @@
-package io.techwings.openai.experiments.demo;
+package io.techwings.openai.experiments.demo.models;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import net.minidev.json.annotate.JsonIgnore;
 
 import java.util.Arrays;
 

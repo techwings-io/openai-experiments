@@ -1,8 +1,7 @@
-package io.techwings.openai.experiments.demo;
+package io.techwings.openai.experiments.demo.models;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
-
 
 import java.util.ArrayList;
 import java.util.List;
