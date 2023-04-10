@@ -2,9 +2,8 @@ package io.techwings.openai.experiments.demo;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import io.techwings.openai.experiments.demo.app.models.OpenAiResponseForModels;
-import io.techwings.openai.experiments.demo.app.models.OpenAiResponseWrapperForModels;
-import io.techwings.openai.experiments.demo.app.models.Permission;
+import io.techwings.openai.experiments.demo.app.models.response.OpenAiResponseForModels;
+import io.techwings.openai.experiments.demo.app.models.response.OpenAiResponseWrapperForModels;
 import org.jetbrains.annotations.NotNull;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -13,8 +12,6 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collector;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -55,20 +52,17 @@ class OpenAiPayloadsForModelsTest {
         List<OpenAiResponseForModels> models =
                 Arrays.asList(responseWrapperForModels.getModels());
         assertFalse(models.isEmpty());
-        models.forEach(System.out::println);
     }
     @NotNull
     private List<OpenAiResponseForModels> getModelsAsList() throws IOException {
         OpenAiResponseWrapperForModels responseWrapperForModels = readPayloadInputAsJson(mapper);
-        OpenAiResponseForModels[] models = responseWrapperForModels.getModels();
-        List<OpenAiResponseForModels> modelsList = Arrays.asList(models);
-        return modelsList;
+        return Arrays.asList(responseWrapperForModels.getModels());
+
     }
     private static long getCountOfGptTurbo(List<OpenAiResponseForModels> modelsList) {
-        long count = modelsList.stream()
+        return modelsList.stream()
                 .filter(m -> m.getId().contains("gpt-3.5-turbo"))
                 .count();
-        return count;
     }
 
 }

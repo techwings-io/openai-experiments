@@ -1,4 +1,4 @@
-package io.techwings.openai.experiments.demo.app.models;
+package io.techwings.openai.experiments.demo.app.models.response;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;

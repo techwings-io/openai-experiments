@@ -1,11 +1,11 @@
-package io.techwings.openai.experiments.demo.app.models;
+package io.techwings.openai.experiments.demo.app.models.response;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 
 import java.util.ArrayList;
 import java.util.List;
-
+import java.util.Objects;
 
 
 @NoArgsConstructor
@@ -33,5 +33,23 @@ public class OpenAiResponseForModels {
                 ", ownedBy='" + ownedBy + '\'' +
                 ", permissions=" + permissions +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof OpenAiResponseForModels that)) return false;
+        return Objects.equals(id, that.id) &&
+                Objects.equals(object, that.object) &&
+                Objects.equals(created, that.created) &&
+                Objects.equals(ownedBy, that.ownedBy) &&
+                Objects.equals(permissions, that.permissions) &&
+                Objects.equals(root, that.root) &&
+                Objects.equals(parent, that.parent);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, object, created, ownedBy, permissions, root, parent);
     }
 }
