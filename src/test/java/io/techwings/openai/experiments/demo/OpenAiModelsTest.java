@@ -15,7 +15,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 
-class OpenAiPayloadsTest {
+class OpenAiModelsTest {
 
 
     private ObjectMapper mapper;
