@@ -1,4 +1,4 @@
-package io.techwings.openai.experiments.demo;
+package io.techwings.openai.experiments.demo.app.main;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
