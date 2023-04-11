@@ -13,7 +13,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class OpenAiPayloadsForModelsTest {
+class OpenAiModelsTest {
     private ObjectMapper mapper;
     @BeforeEach
     public void setup() {
