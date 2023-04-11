@@ -2,15 +2,13 @@ package io.techwings.openai.experiments.demo;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import io.techwings.openai.experiments.demo.app.models.response.OpenAiResponseForModels;
-import io.techwings.openai.experiments.demo.app.models.response.OpenAiResponseWrapperForModels;
+import io.techwings.openai.experiments.demo.app.models.response.OpenAiResponseModelForModels;
 import org.jetbrains.annotations.NotNull;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -24,15 +22,14 @@ class OpenAiPayloadsForModelsTest {
 
     @Test
     void deserialisesTheOpenAiModelsJsonPayload_toADomainModel() throws Exception {
-        OpenAiResponseWrapperForModels responseWrapperForModels = readPayloadInputAsJson(mapper);
+        OpenAiResponseModelForModels responseWrapperForModels = readPayloadInputAsJson(mapper);
         validateReturnedPayload(responseWrapperForModels);
     }
 
     @Test
     void modelInPayloadMustContainGptTurbo() throws Exception {
-        List<OpenAiResponseForModels> modelsList = getModelsAsList();
-        assertTrue(modelsList.size() > 0);
-        long count = getCountOfGptTurbo(modelsList);
+        OpenAiResponseModelForModels responseWrapperForModels = readPayloadInputAsJson(mapper);
+        long count = getCountOfGptTurbo(responseWrapperForModels.getModels());
         assertTrue(count > 0);
     }
     @NotNull
@@ -42,24 +39,17 @@ class OpenAiPayloadsForModelsTest {
         return mapper;
     }
 
-    private static OpenAiResponseWrapperForModels readPayloadInputAsJson(ObjectMapper mapper)
+    private static OpenAiResponseModelForModels readPayloadInputAsJson(ObjectMapper mapper)
             throws IOException {
         File f = new File("src/test/resources/modelPayload.json");
-        return mapper.readValue(f, OpenAiResponseWrapperForModels.class);
+        return mapper.readValue(f, OpenAiResponseModelForModels.class);
     }
 
-    private static void validateReturnedPayload(OpenAiResponseWrapperForModels responseWrapperForModels) {
-        List<OpenAiResponseForModels> models =
-                Arrays.asList(responseWrapperForModels.getModels());
-        assertFalse(models.isEmpty());
+    private static void validateReturnedPayload(OpenAiResponseModelForModels responseWrapperForModels) {
+        assertFalse(responseWrapperForModels.getModels().isEmpty());
     }
-    @NotNull
-    private List<OpenAiResponseForModels> getModelsAsList() throws IOException {
-        OpenAiResponseWrapperForModels responseWrapperForModels = readPayloadInputAsJson(mapper);
-        return Arrays.asList(responseWrapperForModels.getModels());
 
-    }
-    private static long getCountOfGptTurbo(List<OpenAiResponseForModels> modelsList) {
+    private static long getCountOfGptTurbo(List<OpenAiResponseModelForModels.OpenAIModel> modelsList) {
         return modelsList.stream()
                 .filter(m -> m.getId().contains("gpt-3.5-turbo"))
                 .count();
