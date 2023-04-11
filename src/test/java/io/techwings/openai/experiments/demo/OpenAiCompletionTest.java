@@ -1,10 +1,14 @@
 package io.techwings.openai.experiments.demo;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.techwings.openai.experiments.demo.app.models.request.OpenAiCompletionRequest;
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.platform.commons.util.StringUtils;
 
 import java.io.File;
 import java.io.IOException;
@@ -22,6 +26,13 @@ public class OpenAiCompletionTest {
         OpenAiCompletionRequest request = makeCompletionRequestBusinessObject();
         OpenAiCompletionRequest original = retrieveOriginalJsonPayload();
         Assertions.assertEquals(request, original);
+    }
+
+    @Test
+    void validateBusinessObject_generatesValidJsonString() throws Exception {
+        OpenAiCompletionRequest request = makeCompletionRequestBusinessObject();
+        String valueAsString = mapper.writeValueAsString(request);
+        Assertions.assertTrue(StringUtils.isNotBlank(valueAsString));
     }
 
     private OpenAiCompletionRequest retrieveOriginalJsonPayload() throws IOException {
