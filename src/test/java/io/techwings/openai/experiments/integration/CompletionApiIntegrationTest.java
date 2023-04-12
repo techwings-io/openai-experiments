@@ -17,7 +17,7 @@ import org.springframework.web.client.RestTemplate;
 public class CompletionApiIntegrationTest {
 
     @Autowired
-    private String openApiKey;
+    private String openAiKey;
 
     @Autowired
     private RestTemplate restTemplate;
@@ -32,7 +32,7 @@ public class CompletionApiIntegrationTest {
     @Test
     void sendingACompletionRequest_returnsValidResponse() throws Exception {
         OpenAiCompletionRequest request = OpenAiTestUtils.makeCompletionRequestBusinessObject();
-        HttpHeaders headers = OpenAiTestUtils.prepareHttpHeaders(openApiKey);
+        HttpHeaders headers = OpenAiTestUtils.prepareHttpHeaders(openAiKey);
         HttpEntity<OpenAiCompletionRequest> httpEntity = new HttpEntity<>(request, headers);
         ResponseEntity<OpenAIResponseModelForCompletion> response =
                 restTemplate.postForEntity("https://api.openai.com/v1/completions",

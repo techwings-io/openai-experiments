@@ -24,9 +24,9 @@ public class OpenAiTestUtils {
     }
 
     @NotNull
-    public static HttpHeaders prepareHttpHeaders(String openApiKey) {
+    public static HttpHeaders prepareHttpHeaders(String openAiKey) {
         HttpHeaders headers = new HttpHeaders();
-        headers.setBearerAuth(openApiKey);
+        headers.setBearerAuth(openAiKey);
         headers.setContentType(MediaType.APPLICATION_JSON);
         headers.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
         return headers;

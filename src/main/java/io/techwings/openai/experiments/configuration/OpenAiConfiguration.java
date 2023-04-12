@@ -8,12 +8,12 @@ import org.springframework.web.client.RestTemplate;
 @Configuration
 public class OpenAiConfiguration {
 
-    @Value("${OPEN_API_KEY}")
-    private String openApiKey;
+    @Value("${OPEN_AI_KEY}")
+    private String openAiKey;
 
     @Bean
-    public String openApiKey() {
-        return this.openApiKey;
+    public String openAiKey() {
+        return this.openAiKey;
     }
     @Bean
     public RestTemplate restTemplate() {
