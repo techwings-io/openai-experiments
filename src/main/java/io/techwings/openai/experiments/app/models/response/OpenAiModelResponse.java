@@ -9,7 +9,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class OpenAiResponseModelForModels {
+public class OpenAiModelResponse {
 
     @JsonProperty("object")
     private String object;

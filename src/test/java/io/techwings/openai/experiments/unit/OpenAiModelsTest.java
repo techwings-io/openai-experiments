@@ -2,7 +2,7 @@ package io.techwings.openai.experiments.unit;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import io.techwings.openai.experiments.app.models.response.OpenAiResponseModelForModels;
+import io.techwings.openai.experiments.app.models.response.OpenAiModelResponse;
 import org.jetbrains.annotations.NotNull;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -22,13 +22,13 @@ class OpenAiModelsTest {
 
     @Test
     void deserialisesTheOpenAiModelsJsonPayload_toADomainModel() throws Exception {
-        OpenAiResponseModelForModels responseWrapperForModels = readPayloadInputAsJson(mapper);
+        OpenAiModelResponse responseWrapperForModels = readPayloadInputAsJson(mapper);
         validateReturnedPayload(responseWrapperForModels);
     }
 
     @Test
     void modelInPayloadMustContainGptTurbo() throws Exception {
-        OpenAiResponseModelForModels responseWrapperForModels = readPayloadInputAsJson(mapper);
+        OpenAiModelResponse responseWrapperForModels = readPayloadInputAsJson(mapper);
         long count = getCountOfGptTurbo(responseWrapperForModels.getModels());
         assertTrue(count > 0);
     }
@@ -39,17 +39,17 @@ class OpenAiModelsTest {
         return mapper;
     }
 
-    private static OpenAiResponseModelForModels readPayloadInputAsJson(ObjectMapper mapper)
+    private static OpenAiModelResponse readPayloadInputAsJson(ObjectMapper mapper)
             throws IOException {
         File f = new File("src/test/resources/modelPayload.json");
-        return mapper.readValue(f, OpenAiResponseModelForModels.class);
+        return mapper.readValue(f, OpenAiModelResponse.class);
     }
 
-    private static void validateReturnedPayload(OpenAiResponseModelForModels responseWrapperForModels) {
+    private static void validateReturnedPayload(OpenAiModelResponse responseWrapperForModels) {
         assertFalse(responseWrapperForModels.getModels().isEmpty());
     }
 
-    private static long getCountOfGptTurbo(List<OpenAiResponseModelForModels.OpenAIModel> modelsList) {
+    private static long getCountOfGptTurbo(List<OpenAiModelResponse.OpenAIModel> modelsList) {
         return modelsList.stream()
                 .filter(m -> m.getId().contains("gpt-3.5-turbo"))
                 .count();

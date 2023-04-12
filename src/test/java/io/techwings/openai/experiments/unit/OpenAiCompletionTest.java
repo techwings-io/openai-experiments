@@ -3,7 +3,7 @@ package io.techwings.openai.experiments.unit;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.techwings.openai.experiments.app.models.request.OpenAiCompletionRequest;
-import io.techwings.openai.experiments.app.models.response.OpenAiResponseModelForCompletion;
+import io.techwings.openai.experiments.app.models.response.OpenAiCompletionResponse;
 
 import io.techwings.openai.experiments.utils.OpenAiTestUtils;
 import org.junit.jupiter.api.Assertions;
@@ -38,7 +38,7 @@ public class OpenAiCompletionTest {
     @Test
     void jsonResponsePayload_canBeParsedIntoBusinessObject() throws Exception {
         File f = getJsonResponsePayloadForCompletion();
-        mapper.readValue(f, OpenAiResponseModelForCompletion.class);
+        mapper.readValue(f, OpenAiCompletionResponse.class);
         // Would throw an exception before getting here. Works as assertions
     }
 
