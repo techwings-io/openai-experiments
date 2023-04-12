@@ -8,15 +8,11 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class OpenAIUsage {
-
-    @JsonProperty("prompt_tokens")
-    private Integer promptTokens;
-
-    @JsonProperty("completion_tokens")
-    private Integer completionTokens;
-
-    @JsonProperty("total_tokens")
-    private Integer totalTokens;
-
+public class OpenAiChoice {
+    private String text;
+    private Integer index;
+    @JsonProperty("logprobs")
+    private String logProbs;
+    @JsonProperty("finish_reason")
+    private String finishReason;
 }

@@ -1,4 +1,4 @@
-package io.techwings.openai.experiments.app.models.request;
+package io.techwings.openai.experiments.app.models.common;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Message {
+public class OpenAiMessage {
 
     @JsonProperty("role")
     private String role;

@@ -2,6 +2,8 @@ package io.techwings.openai.experiments.unit;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.techwings.openai.experiments.app.models.request.OpenAiChatRequest;
+
+import io.techwings.openai.experiments.app.models.response.OpenAiChatResponse;
 import io.techwings.openai.experiments.utils.OpenAiTestUtils;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -28,7 +30,8 @@ public class OpenAiChatTest {
 
     @Test
     void testJsonResponse_mapsToBusinessObject() throws Exception {
-
+        File f = new File("src/test/resources/chat-response.json");
+        mapper.readValue(f, OpenAiChatResponse.class);
     }
 
 }

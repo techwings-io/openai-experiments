@@ -1,6 +1,6 @@
 package io.techwings.openai.experiments.utils;
 
-import io.techwings.openai.experiments.app.models.request.Message;
+import io.techwings.openai.experiments.app.models.common.OpenAiMessage;
 import io.techwings.openai.experiments.app.models.request.OpenAiChatRequest;
 import io.techwings.openai.experiments.app.models.request.OpenAiCompletionRequest;
 import org.jetbrains.annotations.NotNull;
@@ -28,16 +28,16 @@ public class OpenAiTestUtils {
 
         OpenAiChatRequest request = new OpenAiChatRequest();
         request.setModel("gpt-3.5-turbo");
-        List<Message> messages = prepareMessages();
-        request.setMessages(messages);
+        List<OpenAiMessage> openAiMessages = prepareMessages();
+        request.setOpenAiMessages(openAiMessages);
         return request;
     }
 
     @NotNull
-    private static List<Message> prepareMessages() {
-        Message message = new Message("user", "Hello!");
-        List<Message> messages = new ArrayList<>();
-        messages.add(message);
-        return messages;
+    private static List<OpenAiMessage> prepareMessages() {
+        OpenAiMessage openAiMessage = new OpenAiMessage("user", "Hello!");
+        List<OpenAiMessage> openAiMessages = new ArrayList<>();
+        openAiMessages.add(openAiMessage);
+        return openAiMessages;
     }
 }
