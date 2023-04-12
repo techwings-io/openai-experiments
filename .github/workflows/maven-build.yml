@@ -3,7 +3,7 @@ name: Java CI
 on: [push]
 
 env:
-  ${{secrets.OPEN_AI_KEY}}
+  OPEN_AI_KEY: ${{secrets.OPEN_AI_KEY}}
 
 jobs:
   build:
