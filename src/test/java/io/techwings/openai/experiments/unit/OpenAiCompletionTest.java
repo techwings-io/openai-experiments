@@ -1,4 +1,4 @@
-package io.techwings.openai.experiments;
+package io.techwings.openai.experiments.unit;
 
 
 import com.fasterxml.jackson.databind.ObjectMapper;

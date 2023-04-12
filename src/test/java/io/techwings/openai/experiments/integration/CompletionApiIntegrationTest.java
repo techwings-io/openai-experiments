@@ -1,6 +1,7 @@
 package io.techwings.openai.experiments.integration;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+
 import io.techwings.openai.experiments.main.OpenAiInteractionApplication;
 import io.techwings.openai.experiments.app.models.request.OpenAiCompletionRequest;
 import io.techwings.openai.experiments.app.models.response.OpenAIResponseModelForCompletion;
@@ -17,12 +18,12 @@ import org.springframework.web.client.RestTemplate;
 public class CompletionApiIntegrationTest {
 
     @Autowired
-    private String openAiKey;
-
-    @Autowired
     private RestTemplate restTemplate;
 
     private ObjectMapper mapper;
+
+    @Autowired
+    private HttpHeaders httpHeaders;
 
     @BeforeEach
     public void setup() {
@@ -32,8 +33,8 @@ public class CompletionApiIntegrationTest {
     @Test
     void sendingACompletionRequest_returnsValidResponse() throws Exception {
         OpenAiCompletionRequest request = OpenAiTestUtils.makeCompletionRequestBusinessObject();
-        HttpHeaders headers = OpenAiTestUtils.prepareHttpHeaders(openAiKey);
-        HttpEntity<OpenAiCompletionRequest> httpEntity = new HttpEntity<>(request, headers);
+
+        HttpEntity<OpenAiCompletionRequest> httpEntity = new HttpEntity<>(request, httpHeaders);
         ResponseEntity<OpenAIResponseModelForCompletion> response =
                 restTemplate.postForEntity("https://api.openai.com/v1/completions",
                         httpEntity,
