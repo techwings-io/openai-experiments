@@ -2,6 +2,9 @@ name: Java CI
 
 on: [push]
 
+env:
+  ${{secrets.OPEN_AI_KEY}}
+
 jobs:
   build:
     runs-on: ubuntu-latest
