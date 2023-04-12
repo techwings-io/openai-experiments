@@ -1,10 +1,10 @@
 package io.techwings.openai.experiments.demo;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.techwings.openai.experiments.demo.app.models.request.OpenAiCompletionRequest;
-import org.json.JSONException;
-import org.json.JSONObject;
+import io.techwings.openai.experiments.demo.app.models.response.OpenAIResponseModelForCompletion;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -33,6 +33,16 @@ public class OpenAiCompletionTest {
         OpenAiCompletionRequest request = makeCompletionRequestBusinessObject();
         String valueAsString = mapper.writeValueAsString(request);
         Assertions.assertTrue(StringUtils.isNotBlank(valueAsString));
+    }
+    @Test
+    void jsonResponsePayload_canBeParsedIntoBusinessObject() throws Exception {
+        File f = getJsonResponsePayloadForCompletion();
+        mapper.readValue(f, OpenAIResponseModelForCompletion.class);
+        // Would throw an exception before getting here. Works as assertions
+    }
+
+    private File getJsonResponsePayloadForCompletion() {
+        return new File("src/test/resources/completion-response.json");
     }
 
     private OpenAiCompletionRequest retrieveOriginalJsonPayload() throws IOException {
