@@ -7,6 +7,6 @@
   "n": 1,
   "stream": false,
   "logprobs": null,
-  "echo": false,
+  "echo": true,
   "stop": "\n"
 }

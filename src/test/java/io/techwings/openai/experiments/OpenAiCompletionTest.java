@@ -1,10 +1,11 @@
-package io.techwings.openai.experiments.demo;
+package io.techwings.openai.experiments;
 
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import io.techwings.openai.experiments.demo.app.models.request.OpenAiCompletionRequest;
-import io.techwings.openai.experiments.demo.app.models.response.OpenAIResponseModelForCompletion;
+import io.techwings.openai.experiments.app.models.request.OpenAiCompletionRequest;
+import io.techwings.openai.experiments.app.models.response.OpenAIResponseModelForCompletion;
 
+import io.techwings.openai.experiments.utils.OpenAiTestUtils;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -23,14 +24,14 @@ public class OpenAiCompletionTest {
 
     @Test
     void businessObjectForRequest_transformsToJson() throws Exception {
-        OpenAiCompletionRequest request = makeCompletionRequestBusinessObject();
+        OpenAiCompletionRequest request = OpenAiTestUtils.makeCompletionRequestBusinessObject();
         OpenAiCompletionRequest original = retrieveOriginalJsonPayload();
         Assertions.assertEquals(request, original);
     }
 
     @Test
     void validateBusinessObject_generatesValidJsonString() throws Exception {
-        OpenAiCompletionRequest request = makeCompletionRequestBusinessObject();
+        OpenAiCompletionRequest request = OpenAiTestUtils.makeCompletionRequestBusinessObject();
         String valueAsString = mapper.writeValueAsString(request);
         Assertions.assertTrue(StringUtils.isNotBlank(valueAsString));
     }
@@ -50,18 +51,4 @@ public class OpenAiCompletionTest {
         return mapper.readValue(f, OpenAiCompletionRequest.class);
     }
 
-    private static OpenAiCompletionRequest makeCompletionRequestBusinessObject() {
-        OpenAiCompletionRequest request = new OpenAiCompletionRequest();
-        request.setModel("text-davinci-003");
-        request.setPrompt("Say this is a test");
-        request.setMaxTokens(7);
-        request.setTemperature(0.0);
-        request.setTopP(1);
-        request.setN(1);
-        request.setStream(false);
-        request.setLogProbs(null);
-        request.setEcho(false);
-        request.setStop("\n");
-        return request;
-    }
 }

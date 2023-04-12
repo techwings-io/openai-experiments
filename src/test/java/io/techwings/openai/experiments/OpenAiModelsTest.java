@@ -1,8 +1,8 @@
-package io.techwings.openai.experiments.demo;
+package io.techwings.openai.experiments;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import io.techwings.openai.experiments.demo.app.models.response.OpenAiResponseModelForModels;
+import io.techwings.openai.experiments.app.models.response.OpenAiResponseModelForModels;
 import org.jetbrains.annotations.NotNull;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
