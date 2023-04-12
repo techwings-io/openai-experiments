@@ -1,17 +1,18 @@
 package io.techwings.openai.experiments.integration;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-
-import io.techwings.openai.experiments.main.OpenAiInteractionApplication;
 import io.techwings.openai.experiments.app.models.request.OpenAiCompletionRequest;
 import io.techwings.openai.experiments.app.models.response.OpenAiCompletionResponse;
+import io.techwings.openai.experiments.main.OpenAiInteractionApplication;
 import io.techwings.openai.experiments.utils.OpenAiTestUtils;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.http.*;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatusCode;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
 @SpringBootTest(classes = OpenAiInteractionApplication.class)
@@ -20,29 +21,19 @@ public class CompletionApiIntegrationTest {
     @Autowired
     private RestTemplate restTemplate;
 
-    private ObjectMapper mapper;
-
     @Autowired
     private HttpHeaders httpHeaders;
-
-    @BeforeEach
-    public void setup() {
-        mapper = new ObjectMapper();
-    }
+    @Value("${openai.completion.url}")
+    private String url;
 
     @Test
-    void sendingACompletionRequest_returnsValidResponse() throws Exception {
+    void sendingACompletionRequest_returnsValidResponse() {
         OpenAiCompletionRequest request = OpenAiTestUtils.makeCompletionRequestBusinessObject();
-
         HttpEntity<OpenAiCompletionRequest> httpEntity = new HttpEntity<>(request, httpHeaders);
         ResponseEntity<OpenAiCompletionResponse> response =
-                restTemplate.postForEntity("https://api.openai.com/v1/completions",
-                        httpEntity,
-                        OpenAiCompletionResponse.class);
+                restTemplate.postForEntity(url, httpEntity, OpenAiCompletionResponse.class);
         HttpStatusCode statusCode = response.getStatusCode();
-        Assertions.assertTrue(statusCode.value() > 0);
-        String prettyJson = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(response.getBody());
-        System.out.println(prettyJson);
+        Assertions.assertTrue(statusCode.value() == 200);
     }
 
 
