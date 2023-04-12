@@ -1,11 +1,12 @@
 package io.techwings.openai.experiments.utils;
 
+import io.techwings.openai.experiments.app.models.request.Message;
+import io.techwings.openai.experiments.app.models.request.OpenAiChatRequest;
 import io.techwings.openai.experiments.app.models.request.OpenAiCompletionRequest;
 import org.jetbrains.annotations.NotNull;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.MediaType;
 
-import java.util.Collections;
+import java.util.ArrayList;
+import java.util.List;
 
 public class OpenAiTestUtils {
     public static OpenAiCompletionRequest makeCompletionRequestBusinessObject() {
@@ -23,12 +24,20 @@ public class OpenAiTestUtils {
         return request;
     }
 
+    public static OpenAiChatRequest makeOpenAiChatRequest() {
+
+        OpenAiChatRequest request = new OpenAiChatRequest();
+        request.setModel("gpt-3.5-turbo");
+        List<Message> messages = prepareMessages();
+        request.setMessages(messages);
+        return request;
+    }
+
     @NotNull
-    public static HttpHeaders prepareHttpHeaders(String openAiKey) {
-        HttpHeaders headers = new HttpHeaders();
-        headers.setBearerAuth(openAiKey);
-        headers.setContentType(MediaType.APPLICATION_JSON);
-        headers.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
-        return headers;
+    private static List<Message> prepareMessages() {
+        Message message = new Message("user", "Hello!");
+        List<Message> messages = new ArrayList<>();
+        messages.add(message);
+        return messages;
     }
 }
