@@ -13,7 +13,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class OpenAIResponseModelForCompletion {
+public class OpenAiResponseModelForCompletion {
 
     @JsonProperty("id")
     private String id;

@@ -13,7 +13,7 @@ import java.util.Map;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class OpenAILogprobs {
+public class OpenAiLogprobs {
 
     @JsonProperty("tokens")
     private List<String> tokens;

@@ -4,7 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import io.techwings.openai.experiments.main.OpenAiInteractionApplication;
 import io.techwings.openai.experiments.app.models.request.OpenAiCompletionRequest;
-import io.techwings.openai.experiments.app.models.response.OpenAIResponseModelForCompletion;
+import io.techwings.openai.experiments.app.models.response.OpenAiResponseModelForCompletion;
 import io.techwings.openai.experiments.utils.OpenAiTestUtils;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -35,10 +35,10 @@ public class CompletionApiIntegrationTest {
         OpenAiCompletionRequest request = OpenAiTestUtils.makeCompletionRequestBusinessObject();
 
         HttpEntity<OpenAiCompletionRequest> httpEntity = new HttpEntity<>(request, httpHeaders);
-        ResponseEntity<OpenAIResponseModelForCompletion> response =
+        ResponseEntity<OpenAiResponseModelForCompletion> response =
                 restTemplate.postForEntity("https://api.openai.com/v1/completions",
                         httpEntity,
-                        OpenAIResponseModelForCompletion.class);
+                        OpenAiResponseModelForCompletion.class);
         HttpStatusCode statusCode = response.getStatusCode();
         Assertions.assertTrue(statusCode.value() > 0);
         String prettyJson = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(response.getBody());
