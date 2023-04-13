@@ -1,10 +1,10 @@
-package io.techwings.openai.experiments.integration;
+package io.techwings.openai.integration;
 
-import io.techwings.openai.experiments.app.models.request.OpenAiChatRequest;
-import io.techwings.openai.experiments.app.models.response.OpenAiChatResponse;
-import io.techwings.openai.experiments.main.OpenAiInteractionApplication;
-import io.techwings.openai.experiments.app.services.OpenAiChatService;
-import io.techwings.openai.experiments.utils.OpenAiTestUtils;
+import io.techwings.openai.app.models.request.OpenAiChatRequest;
+import io.techwings.openai.app.models.response.OpenAiChatResponse;
+import io.techwings.openai.main.OpenAiInteractionApplication;
+import io.techwings.openai.app.services.OpenAiChatService;
+import io.techwings.openai.utils.OpenAiTestUtils;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

@@ -1,8 +1,8 @@
-package io.techwings.openai.experiments.utils;
+package io.techwings.openai.utils;
 
-import io.techwings.openai.experiments.app.models.common.OpenAiMessage;
-import io.techwings.openai.experiments.app.models.request.OpenAiChatRequest;
-import io.techwings.openai.experiments.app.models.request.OpenAiCompletionRequest;
+import io.techwings.openai.app.models.common.OpenAiMessage;
+import io.techwings.openai.app.models.request.OpenAiChatRequest;
+import io.techwings.openai.app.models.request.OpenAiCompletionRequest;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;

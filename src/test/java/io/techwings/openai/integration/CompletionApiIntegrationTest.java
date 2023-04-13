@@ -1,9 +1,9 @@
-package io.techwings.openai.experiments.integration;
+package io.techwings.openai.integration;
 
-import io.techwings.openai.experiments.app.models.request.OpenAiCompletionRequest;
-import io.techwings.openai.experiments.app.models.response.OpenAiCompletionResponse;
-import io.techwings.openai.experiments.main.OpenAiInteractionApplication;
-import io.techwings.openai.experiments.utils.OpenAiTestUtils;
+import io.techwings.openai.app.models.request.OpenAiCompletionRequest;
+import io.techwings.openai.app.models.response.OpenAiCompletionResponse;
+import io.techwings.openai.main.OpenAiInteractionApplication;
+import io.techwings.openai.utils.OpenAiTestUtils;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

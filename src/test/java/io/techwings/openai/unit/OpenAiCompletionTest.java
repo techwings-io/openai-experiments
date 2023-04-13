@@ -1,11 +1,11 @@
-package io.techwings.openai.experiments.unit;
+package io.techwings.openai.unit;
 
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import io.techwings.openai.experiments.app.models.request.OpenAiCompletionRequest;
-import io.techwings.openai.experiments.app.models.response.OpenAiCompletionResponse;
+import io.techwings.openai.app.models.request.OpenAiCompletionRequest;
+import io.techwings.openai.app.models.response.OpenAiCompletionResponse;
 
-import io.techwings.openai.experiments.utils.OpenAiTestUtils;
+import io.techwings.openai.utils.OpenAiTestUtils;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
