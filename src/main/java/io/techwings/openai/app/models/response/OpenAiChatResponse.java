@@ -1,6 +1,6 @@
-package io.techwings.openai.experiments.app.models.response;
+package io.techwings.openai.app.models.response;
 
-import io.techwings.openai.experiments.app.models.common.OpenAIUsage;
+import io.techwings.openai.app.models.common.OpenAIUsage;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

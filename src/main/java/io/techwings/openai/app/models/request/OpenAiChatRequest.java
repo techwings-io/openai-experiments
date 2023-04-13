@@ -1,7 +1,7 @@
-package io.techwings.openai.experiments.app.models.request;
+package io.techwings.openai.app.models.request;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import io.techwings.openai.experiments.app.models.common.OpenAiMessage;
+import io.techwings.openai.app.models.common.OpenAiMessage;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

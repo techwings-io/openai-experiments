@@ -1,7 +1,6 @@
-package io.techwings.openai.experiments.app.models.response;
+package io.techwings.openai.app.models.common;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import io.techwings.openai.experiments.app.models.common.OpenAiMessage;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -9,9 +8,11 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class OpenAiChatResponseChoice {
-    private int index;
-    private OpenAiMessage message;
+public class OpenAiChoice {
+    private String text;
+    private Integer index;
+    @JsonProperty("logprobs")
+    private String logProbs;
     @JsonProperty("finish_reason")
     private String finishReason;
 }

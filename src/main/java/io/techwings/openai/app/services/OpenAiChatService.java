@@ -1,7 +1,7 @@
-package io.techwings.openai.experiments.app.services;
+package io.techwings.openai.app.services;
 
-import io.techwings.openai.experiments.app.models.request.OpenAiChatRequest;
-import io.techwings.openai.experiments.app.models.response.OpenAiChatResponse;
+import io.techwings.openai.app.models.request.OpenAiChatRequest;
+import io.techwings.openai.app.models.response.OpenAiChatResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
