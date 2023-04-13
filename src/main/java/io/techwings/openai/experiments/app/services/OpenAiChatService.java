@@ -1,4 +1,4 @@
-package io.techwings.openai.experiments.services;
+package io.techwings.openai.experiments.app.services;
 
 import io.techwings.openai.experiments.app.models.request.OpenAiChatRequest;
 import io.techwings.openai.experiments.app.models.response.OpenAiChatResponse;

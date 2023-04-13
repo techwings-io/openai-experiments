@@ -3,7 +3,7 @@ package io.techwings.openai.experiments.integration;
 import io.techwings.openai.experiments.app.models.request.OpenAiChatRequest;
 import io.techwings.openai.experiments.app.models.response.OpenAiChatResponse;
 import io.techwings.openai.experiments.main.OpenAiInteractionApplication;
-import io.techwings.openai.experiments.services.OpenAiChatService;
+import io.techwings.openai.experiments.app.services.OpenAiChatService;
 import io.techwings.openai.experiments.utils.OpenAiTestUtils;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;

@@ -1,4 +1,4 @@
-package io.techwings.openai.experiments.configuration;
+package io.techwings.openai.experiments.app.configuration;
 
 
 import org.springframework.beans.factory.annotation.Value;
