@@ -3,37 +3,46 @@ package io.techwings.openai.experiments.integration;
 import io.techwings.openai.experiments.app.models.request.OpenAiChatRequest;
 import io.techwings.openai.experiments.app.models.response.OpenAiChatResponse;
 import io.techwings.openai.experiments.main.OpenAiInteractionApplication;
+import io.techwings.openai.experiments.services.OpenAiChatService;
 import io.techwings.openai.experiments.utils.OpenAiTestUtils;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.client.RestTemplate;
 
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 
 @SpringBootTest(classes = OpenAiInteractionApplication.class)
 public class ChatApiIntegrationTest {
 
     @Autowired
-    private RestTemplate restTemplate;
+    private OpenAiChatService chatService;
 
-    @Autowired
-    private HttpHeaders httpHeaders;
+    private OpenAiChatRequest request;
 
-    @Value("${openai.chat.url}")
-    private String url;
+    @BeforeEach
+    public void setup() {
+        request = OpenAiTestUtils.makeOpenAiChatRequest();
+    }
 
     @Test
-    void successfulRequestToChat_shouldReturnAValidPayload() {
-        OpenAiChatRequest request = OpenAiTestUtils.makeOpenAiChatRequest();
-        HttpEntity<OpenAiChatRequest> httpEntity = new HttpEntity<>(request, httpHeaders);
-        ResponseEntity<OpenAiChatResponse> response =
-                restTemplate.postForEntity(url, httpEntity, OpenAiChatResponse.class);
-        Assertions.assertTrue(response.getStatusCode().value() == 200);
+    void chatServiceCall_returnsAValidPayload() {
+        OpenAiChatResponse chatResponse =
+                chatService.makeChatRequest(request);
+        assertNotNull(chatResponse);
+    }
+
+    @Test()
+    void chatServiceCallWithInvalidPayload_mustThrowError() {
+        request = OpenAiTestUtils.makeInvalidChatRequest();
+        OpenAiChatService.ChatEndpointInvocationError thrown =
+                Assertions.assertThrows(
+                        OpenAiChatService.ChatEndpointInvocationError.class,
+                        () -> chatService.makeChatRequest(request),
+                        "Expected ChatEndpointInvocationError but it wasn't thown"
+                );
+        assertNotNull(thrown.getCause().getMessage());
     }
 }

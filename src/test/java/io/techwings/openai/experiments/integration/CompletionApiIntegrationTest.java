@@ -23,6 +23,7 @@ public class CompletionApiIntegrationTest {
 
     @Autowired
     private HttpHeaders httpHeaders;
+
     @Value("${openai.completion.url}")
     private String url;
 
@@ -33,8 +34,7 @@ public class CompletionApiIntegrationTest {
         ResponseEntity<OpenAiCompletionResponse> response =
                 restTemplate.postForEntity(url, httpEntity, OpenAiCompletionResponse.class);
         HttpStatusCode statusCode = response.getStatusCode();
-        Assertions.assertTrue(statusCode.value() == 200);
+        Assertions.assertEquals(200, statusCode.value());
     }
-
 
 }

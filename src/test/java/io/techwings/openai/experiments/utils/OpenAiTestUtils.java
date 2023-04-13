@@ -40,4 +40,10 @@ public class OpenAiTestUtils {
         openAiMessages.add(openAiMessage);
         return openAiMessages;
     }
+
+    public static OpenAiChatRequest makeInvalidChatRequest() {
+        OpenAiChatRequest request = new OpenAiChatRequest();
+        request.setModel("invalid-model");
+        return request;
+    }
 }

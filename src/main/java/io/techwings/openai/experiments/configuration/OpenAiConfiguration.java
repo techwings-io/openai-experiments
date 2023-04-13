@@ -33,4 +33,5 @@ public class OpenAiConfiguration {
     public RestTemplate restTemplate() {
         return new RestTemplate();
     }
+
 }
