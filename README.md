@@ -3,6 +3,10 @@ Simple Spring Boot application that offers a Spring Controller and a
 Spring Service to interact with Open AI API endpoint for
 chat, using the gpt-3.5-turbo model. 
 
+## Full documentation
+If you want to see the full documentation about this code, please visit
+[this link](https://techwings.io/2023/04/13/spring-boot-chatgpt-microservice/)
+
 ## How to run
 
 ### Prerequisites

@@ -9,9 +9,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>io.techwings.openai.experiments</groupId>
-    <artifactId>demo</artifactId>
+    <artifactId>openai-service</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>demo</name>
+    <name>openai-service</name>
     <description>demo</description>
     <properties>
         <java.version>17</java.version>
@@ -32,15 +32,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-configuration-processor</artifactId>
             <optional>true</optional>
-        </dependency>
-<!--        <dependency>-->
-<!--            <groupId>com.theokanning.openai-gpt3-java</groupId>-->
-<!--            <artifactId>service</artifactId>-->
-<!--            <version>0.12.0</version>-->
-<!--        </dependency>-->
-        <dependency>
-            <groupId>com.squareup.okhttp3</groupId>
-            <artifactId>okhttp</artifactId>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>

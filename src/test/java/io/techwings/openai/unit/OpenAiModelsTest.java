@@ -3,7 +3,6 @@ package io.techwings.openai.unit;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.techwings.openai.app.models.response.OpenAiModelResponse;
-import org.jetbrains.annotations.NotNull;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -11,7 +10,8 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class OpenAiModelsTest {
     private ObjectMapper mapper;
@@ -32,7 +32,7 @@ class OpenAiModelsTest {
         long count = getCountOfGptTurbo(responseWrapperForModels.getModels());
         assertTrue(count > 0);
     }
-    @NotNull
+
     private static ObjectMapper prepareObjectMapper() {
         ObjectMapper mapper = new ObjectMapper();
         mapper.disable(DeserializationFeature.FAIL_ON_IGNORED_PROPERTIES);

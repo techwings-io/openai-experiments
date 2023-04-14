@@ -3,7 +3,6 @@ package io.techwings.openai.utils;
 import io.techwings.openai.app.models.common.OpenAiMessage;
 import io.techwings.openai.app.models.request.OpenAiChatRequest;
 import io.techwings.openai.app.models.request.OpenAiCompletionRequest;
-import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,7 +32,7 @@ public class OpenAiTestUtils {
         return request;
     }
 
-    @NotNull
+
     private static List<OpenAiMessage> prepareMessages() {
         OpenAiMessage openAiMessage = new OpenAiMessage("user", "Hello!");
         List<OpenAiMessage> openAiMessages = new ArrayList<>();
