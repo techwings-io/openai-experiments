@@ -44,7 +44,7 @@ jobs:
       - name: Configure gcloud docker
         run: gcloud auth configure-docker europe-west2-docker.pkg.dev --quiet
       - id: deploys-image-to-gcp
-        run: docker push europe-west2-docker.pkg.dev/techwings-production/techwings-docker-registry/security-apis
+        run: docker push europe-west2-docker.pkg.dev/techwings-production/techwings-docker-registry/openai-service
 
 #      - id: 'deploy'
 #        uses: 'google-github-actions/deploy-cloudrun@v1'
